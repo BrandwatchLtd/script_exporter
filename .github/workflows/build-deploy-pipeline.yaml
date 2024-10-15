@@ -29,19 +29,6 @@ jobs:
       - name: Test
         run: go test ./...
 
-      - name: Build
-        run: make release
-
-      - name: Upload
-        run: |
-          ./upload.sh ./bin/script_exporter-darwin-amd64 application/x-binary
-          ./upload.sh ./bin/script_exporter-linux-amd64 application/x-binary
-          ./upload.sh ./bin/script_exporter-linux-armv7 application/x-binary
-          ./upload.sh ./bin/script_exporter-linux-arm64 application/x-binary
-          ./upload.sh ./bin/script_exporter-windows-amd64.exe application/x-binary
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
   docker:
     runs-on: ubuntu-latest
     steps:
