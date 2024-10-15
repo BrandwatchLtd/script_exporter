@@ -23,6 +23,12 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
 
+      - name: Ensure go.sum exists
+        run: |
+          if [ ! -f go.sum ]; then
+            go mod tidy
+          fi
+
       - name: Get dependencies
         run: go mod download
 
