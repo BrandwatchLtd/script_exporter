@@ -45,7 +45,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         env:
-          IMAGE_ID: docker.artifactory.brandwatch.com/${{ github.repository.event.name }}:${{ github.ref_name }}
+          IMAGE_ID: docker.artifactory.brandwatch.com/${{ github.event.repository.name }}:${{ github.ref_name }}
         with:
           push: true
           tags: ${{ format('{0}-{1}', env.IMAGE_ID, 'amd64') }},${{ format('{0}-{1}', env.IMAGE_ID, github.run_id) }}
