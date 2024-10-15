@@ -12,7 +12,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    name: Release
+    name: Build and Test
     steps:
       - name: Set up Go 1.13
         uses: actions/setup-go@v5
@@ -47,5 +47,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ format('{0}/{1}-{2}', github.event.repository.name, github.ref_name, 'amd64') }}
-            ${{ format('{0}/{1}-{2}', github.event.repository.name, github.ref_name, github.run_id) }}
+            ${{ format('{0}:{1}-{2}', github.event.repository.name, github.ref_name, 'amd64') }}
+            ${{ format('{0}:{1}-{2}', github.event.repository.name, github.ref_name, github.run_id) }}
